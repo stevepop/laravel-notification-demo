@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserHasSignedUp' => [
             'App\Listeners\NotifyWhenSignedUp',
         ],
+        'App\Events\NewPostCreated' => [
+            'App\Listeners\NotifyWhenNewPostCreated',
+        ],
     ];
 
     /**

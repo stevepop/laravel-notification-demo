@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewPostCreated;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,10 @@ class PostController extends Controller
 	    $data['user_id'] = Auth::user()->id;
 	    $post = Post::create($data);
 
-	    return redirect()->route('edit_post', ['id' => $post->id]);
+	    // Fire event when Post is created
+        event(new NewPostCreated($post));
+
+	    return redirect()->route('list_drafts');
 	}
 
 	public function edit(Post $post)

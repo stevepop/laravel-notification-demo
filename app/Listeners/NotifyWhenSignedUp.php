@@ -39,8 +39,6 @@ class NotifyWhenSignedUp
          * @param  UserHasSignedUp $event
          * @return void
          */
-        // Send email notification
-
 
         $slackUser = config('slack.channels.signups');
         // Notify Admin
